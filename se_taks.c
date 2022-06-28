@@ -171,7 +171,7 @@
 
 void process_usart2
 	(void * param){
-		char str[50];
+//char str[50];
 			for(;;){
 		//		xMessageBufferReceive( xRx2MessageBuffer, str, 50, portMAX_DELAY);
 			#if USE_SEMAP 

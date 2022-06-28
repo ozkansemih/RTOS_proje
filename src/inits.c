@@ -10,6 +10,8 @@ void inits( void ){
 //	init_Usart2();
 	 init_Usart2();
 	init_Usart1();
+	init_SPI1();
+//	init_SPI2();
 
 }
 	
@@ -22,6 +24,98 @@ void init_rcc(){
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+}
+void init_SPI1(){
+
+	 RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE , ENABLE);
+	 RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA , ENABLE);
+	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1  , ENABLE);
+
+	GPIO_InitTypeDef gp_st;
+	SPI_InitTypeDef spi_st;
+
+	// 										sck 			 miso 		mosi
+		gp_st.GPIO_Pin=GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7;
+		gp_st.GPIO_OType=GPIO_OType_PP;
+		gp_st.GPIO_Mode=GPIO_Mode_AF;
+		GPIO_Init(GPIOA,&gp_st);
+	  
+     // chip select
+		gp_st.GPIO_Pin=GPIO_Pin_4;
+		gp_st.GPIO_OType=GPIO_OType_PP;
+		gp_st.GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_Init(GPIOA,&gp_st);
+
+		GPIO_PinAFConfig(GPIOA,GPIO_PinSource5,GPIO_AF_SPI1);
+		GPIO_PinAFConfig(GPIOA,GPIO_PinSource6,GPIO_AF_SPI1);
+		GPIO_PinAFConfig(GPIOA,GPIO_PinSource7,GPIO_AF_SPI1);
+		
+			SPI1->CR1 |= 0x4; // Master Mode
+	SPI1->CR1 |= 0x31; // fclk / 265
+	SPI1->CR2 |= 0x4;
+	SPI1->CR1 |= 0x40; // Enabling SPI SPI periph
+//		spi_st.SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_32;
+//		spi_st.SPI_DataSize=SPI_DataSize_8b;
+//		spi_st.SPI_Direction=SPI_Direction_2Lines_FullDuplex;
+//		spi_st.SPI_FirstBit=SPI_FirstBit_MSB;
+//		spi_st.SPI_Mode=SPI_Mode_Master;
+//		spi_st.SPI_NSS=SPI_NSSInternalSoft_Set|SPI_NSS_Soft;
+//		spi_st.SPI_CPOL=SPI_CPOL_High;
+//		spi_st.SPI_CPHA=SPI_CPHA_2Edge;
+//		SPI_Init(SPI1,&spi_st);
+//		SPI_Cmd(SPI1,ENABLE);
+//		
+	GPIO_SetBits(GPIOA,GPIO_Pin_4);
+
+}
+void init_SPI2(){
+		
+	/*
+	////////////////////////////////////////////
+							B-12 CS
+	B-13 SCK
+							B-14 MISO
+		B-15 MOSI
+	////////////////////////////////////////////
+	*/
+	
+	
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+	
+		GPIO_InitTypeDef gp;
+	
+		gp.GPIO_Pin= GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+		gp.GPIO_Mode= GPIO_Mode_AF;
+		gp.GPIO_OType = GPIO_OType_PP;
+		GPIO_Init( GPIOB, &gp);
+
+		gp.GPIO_Pin= GPIO_Pin_12 ;
+		gp.GPIO_Mode= GPIO_Mode_OUT;
+		gp.GPIO_OType = GPIO_OType_PP;
+		GPIO_Init( GPIOB, &gp);
+	GPIO_PinAFConfig( GPIOB, GPIO_Pin_13, GPIO_AF_SPI2);
+	GPIO_PinAFConfig( GPIOB, GPIO_Pin_15, GPIO_AF_SPI2);
+//		GPIO_PinAFConfig( GPIOB, GPIO_Pin_14, GPIO_AF_SPI2);
+
+//	SPI_InitTypeDef sp;
+//	sp.SPI_FirstBit = SPI_FirstBit_MSB;
+//	sp.SPI_Mode = SPI_Mode_Master;
+//	sp.SPI_DataSize= SPI_DataSize_8b;
+//	sp.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
+//	sp.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+//	sp.SPI_CPHA = 1;
+//	sp.SPI_CPOL= 1;
+//	sp.SPI_NSS= SPI_NSS_Soft;
+//	
+//	SPI_Init(SPI2, &sp);
+//	SPI_Cmd(SPI2,ENABLE);
+	SPI2->CR1 |= 0x4; // Master Mode
+	SPI2->CR1 |= 0x31; // fclk / 265
+	SPI2->CR2 |= 0x4;
+	SPI2->CR1 |= 0x40; // Enabling SPI SPI periph
+	GPIO_SetBits(GPIOB,GPIO_Pin_12);
+
 }
 
 void init_Usart1( void){

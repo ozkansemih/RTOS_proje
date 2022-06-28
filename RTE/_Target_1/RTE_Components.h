@@ -28,6 +28,8 @@
 #define RTE_DEVICE_STDPERIPH_RCC
 /*  Keil::Device:StdPeriph Drivers:SDIO:1.3.0 */
 #define RTE_DEVICE_STDPERIPH_SDIO
+/*  Keil::Device:StdPeriph Drivers:SPI:1.3.0 */
+#define RTE_DEVICE_STDPERIPH_SPI
 /*  Keil::Device:StdPeriph Drivers:SYSCFG:1.3.0 */
 #define RTE_DEVICE_STDPERIPH_SYSCFG
 /*  Keil::Device:StdPeriph Drivers:USART:1.3.0 */

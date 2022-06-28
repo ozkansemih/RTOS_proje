@@ -15,6 +15,7 @@
 .\objects\misc.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_gpio.h
 .\objects\misc.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_rcc.h
 .\objects\misc.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_sdio.h
+.\objects\misc.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_spi.h
 .\objects\misc.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_syscfg.h
 .\objects\misc.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\misc.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\misc.h

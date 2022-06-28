@@ -20,6 +20,16 @@ size_t mesagebufret;
 int main(){
 	SystemInit();
 	inits();
+		init_Screen();
+	
+			spi1_send( SPI1,0x20); // use basic instruction set
+	spi1_send( SPI1,0x0C); // Display control, normal mode
+		spi1_send( SPI1,0x21); // Function set
+	spi1_send( SPI1,0xC6);  // voltaj ayari
+		spi1_send( SPI1,0x20); // use basic instruction set
+	spi1_send( SPI1,0x0C); // Display control, normal mode
+	GPIO_SetBits( PCD8544_PORT, PCD8544_BL_PIN); // GPIOD GPIO_Pin_14
+put_char_nOKIA( 'a');
 	portENABLE_INTERRUPTS();
 	xUsart2TxQueue = xQueueCreate(10, sizeof(char*)*QUEBUFFERLENGTH);
 	xTimer1 = xTimerCreate( " timer.1",se_DELAY_MS(2500),pdTRUE,NULL,Timer1_CallBack);
@@ -28,10 +38,10 @@ int main(){
 	xRx2MessageBuffer = xMessageBufferCreate(20);
 	MessageQueue = xQueueCreate(10,50);
 	
-	xTaskCreate ( vPeriodiktoggle12, "periodik toggle 12",1000,(void *)1000,4,NULL );
+//	xTaskCreate ( vPeriodiktoggle12, "periodik toggle 12",1000,(void *)1000,4,NULL );
 //	xTaskCreate ( vPeriodiktoggle13, "periodik toggle 13",1000,(void *)500,3,NULL );
 //	xTaskCreate ( vPeriodiktoggle14, "periodik toggle 14",1000,(void *)250,2,NULL );
-	xTaskCreate ( vPeriodiktoggle15, "periodik toggle 15",1000,(void *)4000,1,NULL );
+//	xTaskCreate ( vPeriodiktoggle15, "periodik toggle 15",1000,(void *)4000,1,NULL );
 	xTaskCreate ( MessageToQueue, "MessageToQueue", 2000, NULL, 2,NULL);
 //	xTaskCreate( process_usart2, "uasrt_process",1000, NULL, 2,NULL);
 	xTaskCreate( process_MessageQueue, "QUEUE_process",1000, NULL, 3,NULL);
@@ -59,6 +69,9 @@ void USART2_IRQHandler(void)
 		if ( ( usa2_RX_buf[usar2_data_cnt-1]==10) && (usar2_data==13) )
 		{
 					usa2_RX_buf[ usar2_data_cnt] = '\0';
+					usa2_RX_buf[ usar2_data_cnt -1] = '\0';
+			 put_str_nOKIA ( usa2_RX_buf);
+
 			mesagebufret = xMessageBufferSendFromISR( xRx2MessageBuffer, usa2_RX_buf, strlen(usa2_RX_buf), &pxhigherpriorityTaskWoken);
 			usar2_data_cnt	 = 0;
 

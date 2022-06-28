@@ -20,7 +20,8 @@ void led13_on( void ){
 }
 void led13_off( void ){
 		GPIO_ResetBits(GPIOD, GPIO_Pin_13);
-}void led14_on( void ){
+}
+void led14_on( void ){
 		GPIO_SetBits(GPIOD, GPIO_Pin_14);
 }
 void led14_off( void ){

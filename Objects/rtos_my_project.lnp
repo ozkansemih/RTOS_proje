@@ -3,6 +3,8 @@
 ".\objects\inits.o"
 ".\objects\leds.o"
 ".\objects\se_taks.o"
+".\objects\pcdd8544.o"
+".\objects\spi_drive.o"
 ".\objects\croutine.o"
 ".\objects\event_groups.o"
 ".\objects\list.o"
@@ -21,6 +23,7 @@
 ".\objects\stm32f4xx_usart.o"
 ".\objects\startup_stm32f40_41xxx.o"
 ".\objects\system_stm32f4xx.o"
+".\objects\stm32f4xx_spi.o"
 --ro-base 0x08000000 --entry 0x08000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\rtos_my_project.map" -o .\Objects\rtos_my_project.axf

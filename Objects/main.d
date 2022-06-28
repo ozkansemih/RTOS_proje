@@ -15,6 +15,7 @@
 .\objects\main.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_gpio.h
 .\objects\main.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_rcc.h
 .\objects\main.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_sdio.h
+.\objects\main.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_spi.h
 .\objects\main.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_syscfg.h
 .\objects\main.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\main.o: C:\Users\semih\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\1.0.8\Device\StdPeriph_Driver\inc\misc.h
@@ -37,4 +38,6 @@
 .\objects\main.o: defines.h
 .\objects\main.o: .\inc\inits.h
 .\objects\main.o: .\inc\leds.h
+.\objects\main.o: .\inc\spi_drive.h
+.\objects\main.o: .\inc\PCD8544.h
 .\objects\main.o: D:\Programlar\Keil\ARM\ARMCC\Bin\..\include\string.h
