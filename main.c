@@ -55,7 +55,8 @@ void USART2_IRQHandler(void)
 		//To receive data and locate them into our char variable.
 		usar2_data= USART_ReceiveData(USART2);
 		
-		if ( usar2_data == 10 || usar2_data == 13  )
+//		if ( usar2_data == 10 || usar2_data == 13  )
+		if ( ( usa2_RX_buf[usar2_data_cnt-1]==10) && (usar2_data==13) )
 		{
 					usa2_RX_buf[ usar2_data_cnt] = '\0';
 			mesagebufret = xMessageBufferSendFromISR( xRx2MessageBuffer, usa2_RX_buf, strlen(usa2_RX_buf), &pxhigherpriorityTaskWoken);

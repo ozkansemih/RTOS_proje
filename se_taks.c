@@ -3,8 +3,10 @@
 
 	TickType_t timeperiod ;
 	TickType_t curr_Tick ;
+	
 	QueueHandle_t xUsart2TxQueue;
 	QueueHandle_t xUsart2RxQueue;
+	
 	MessageBufferHandle_t xRx2MessageBuffer;
 	QueueHandle_t MessageQueue;
 
